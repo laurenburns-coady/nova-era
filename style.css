@@ -1,0 +1,504 @@
+/* ============================================================
+   NOVA ERA — Series Pitch Deck
+   Style guide: K-HOLE aesthetic (minimalism, full-bleed, 
+   specimen spacing) + Zapfino wordmark + Cormorant body
+   Letter size: 8.5 × 11in
+   ============================================================ */
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Design Tokens ──────────────────────────────────────────── */
+:root {
+  /* Palette — placeholder; will refine with Lauren's references */
+  --ink:        #0C0A08;        /* near-black, warm */
+  --paper:      #F0EBE1;        /* aged ivory */
+  --paper-warm: #E8E0D4;        /* slightly darker ivory */
+  --accent:     #2A1F14;        /* very dark brown, for accents */
+  --signal:     #C8A96E;        /* antique gold — placeholder color */
+  --white:      #FFFFFF;
+
+  /* Typography */
+  --font-wordmark: 'Zapfino', 'Zapf Chancery', 'Palatino Linotype', cursive;
+  --font-serif:    'Cormorant', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'Helvetica Neue', Arial, sans-serif;
+
+  /* Page dimensions — letter size */
+  --page-w:     8.5in;
+  --page-h:     11in;
+
+  /* Spacing rhythm */
+  --margin-outer: 0.65in;
+  --margin-inner: 0.5in;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #D0C8BC;  /* visible in browser between pages */
+}
+
+body {
+  font-family: var(--font-serif);
+  color: var(--ink);
+  background: #D0C8BC;
+}
+
+/* ── Page Shell ─────────────────────────────────────────────── */
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  margin: 0.4in auto;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Shared Inner Layout ─────────────────────────────────────── */
+.page__inner {
+  padding: var(--margin-outer);
+  flex: 1;
+}
+
+.page__inner--center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ── Labels (small caps category markers) ──────────────────── */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 1.8rem;
+}
+
+/* ── Section Headings ───────────────────────────────────────── */
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 0.5in;
+}
+
+.section-heading--page-top {
+  padding: var(--margin-outer) var(--margin-outer) 0;
+  margin-bottom: 0.35in;
+}
+
+/* ── Body Text ──────────────────────────────────────────────── */
+.body-text {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 36em;
+}
+
+.body-text + .body-text {
+  margin-top: 1.1em;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   01 · COVER
+   ══════════════════════════════════════════════════════════════ */
+.page--cover {
+  background: var(--ink);
+  justify-content: flex-end;
+}
+
+.cover__image-fill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cover__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(
+      170deg,
+      rgba(12,10,8,0.05) 0%,
+      rgba(12,10,8,0.55) 55%,
+      rgba(12,10,8,0.90) 100%
+    ),
+    /* placeholder until real image is dropped in */
+    repeating-linear-gradient(
+      45deg,
+      #1a1510 0px,
+      #1a1510 2px,
+      #231e18 2px,
+      #231e18 12px
+    );
+  /* swap this for: background-image: url('../images/cover.jpg'); background-size: cover; background-position: center; */
+}
+
+.cover__content {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--margin-outer) 0.55in;
+}
+
+.title--wordmark {
+  font-family: var(--font-wordmark);
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  /* Zapfino renders beautifully at large sizes; 
+     on non-Mac systems this falls back gracefully */
+}
+
+.cover__series-type {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-top: 0.7rem;
+}
+
+.cover__footer {
+  position: relative;
+  z-index: 1;
+  padding: 0.2in var(--margin-outer);
+  border-top: 1px solid rgba(200, 169, 110, 0.2);
+}
+
+.cover__network-slug {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.5);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   02 · LOGLINE
+   ══════════════════════════════════════════════════════════════ */
+.page--logline {
+  background: var(--paper);
+}
+
+.logline__text {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 28em;
+  border: none;
+  quotes: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   03 · THE WORLD
+   ══════════════════════════════════════════════════════════════ */
+.page--world {
+  background: var(--paper-warm);
+}
+
+.world__image-fill {
+  flex: 0 0 4.4in;
+  position: relative;
+  overflow: hidden;
+}
+
+.world__image-placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    /* will be replaced with background-image: url('../images/world.jpg') */
+    repeating-linear-gradient(
+      135deg,
+      #C4B89E 0px,
+      #C4B89E 1px,
+      #D4C8B2 1px,
+      #D4C8B2 14px
+    );
+  background-size: cover;
+  background-position: center;
+}
+
+.world__text {
+  flex: 1;
+  padding: 0.45in var(--margin-outer) var(--margin-outer);
+}
+
+.world__text .section-heading {
+  margin-bottom: 0.25in;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   04 · TONE
+   ══════════════════════════════════════════════════════════════ */
+.page--tone {
+  background: var(--ink);
+}
+
+.page--tone .label {
+  color: rgba(200,169,110,0.6);
+}
+
+.tone__list {
+  list-style: none;
+  counter-reset: tone-counter;
+}
+
+.tone__list li {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--paper);
+  line-height: 1.5;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid rgba(240,235,225,0.08);
+  letter-spacing: 0.02em;
+}
+
+.tone__list li:last-child {
+  border-bottom: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   05 · CHARACTERS
+   ══════════════════════════════════════════════════════════════ */
+.page--characters {
+  background: var(--paper);
+}
+
+.characters__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.3in;
+  padding: 0 var(--margin-outer) var(--margin-outer);
+  flex: 1;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+}
+
+.character__image-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--paper-warm);
+  border: 1px solid rgba(12,10,8,0.07);
+  /* replace with: background-image: url('../images/character-name.jpg'); background-size: cover; */
+}
+
+.character__name {
+  font-family: var(--font-wordmark);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-top: 0.18in;
+  line-height: 1.2;
+}
+
+.character__role {
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-top: 0.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.character__desc {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: var(--ink);
+  opacity: 0.75;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   06 · VISUAL REFERENCES / COMPS
+   ══════════════════════════════════════════════════════════════ */
+.page--references {
+  background: var(--paper-warm);
+}
+
+.page--references .label {
+  margin-bottom: 2.4rem;
+}
+
+.references__list {
+  list-style: none;
+}
+
+.references__list li {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.4;
+  padding: 0.18rem 0;
+  border-bottom: 1px solid rgba(12,10,8,0.09);
+  letter-spacing: 0.01em;
+}
+
+.references__list li:last-child {
+  border-bottom: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   07 · EPISODE ARC
+   ══════════════════════════════════════════════════════════════ */
+.page--episodes {
+  background: var(--paper);
+}
+
+.episodes__list {
+  padding: 0 var(--margin-outer) var(--margin-outer);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.episode {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3in;
+  padding: 0.16in 0;
+  border-bottom: 1px solid rgba(12,10,8,0.07);
+}
+
+.episode:last-child {
+  border-bottom: none;
+}
+
+.episode__number {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--signal);
+  flex: 0 0 0.35in;
+}
+
+.episode__title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.episode__desc {
+  font-family: var(--font-serif);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   08 · CREATOR STATEMENT
+   ══════════════════════════════════════════════════════════════ */
+.page--creator {
+  background: var(--ink);
+}
+
+.page--creator .page__inner {
+  align-items: center;
+  text-align: center;
+}
+
+.creator__statement {
+  font-family: var(--font-wordmark);
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--paper);
+  max-width: 22em;
+  margin-bottom: 0.55in;
+  quotes: none;
+}
+
+.creator__name {
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 0.4rem;
+}
+
+.creator__bio {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--paper);
+  opacity: 0.55;
+  max-width: 30em;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ══════════════════════════════════════════════════════════════ */
+@media print {
+  html, body {
+    background: white;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page:last-of-type {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+}
+
+@page {
+  size: letter portrait;
+  margin: 0;
+}
