@@ -1,9 +1,12 @@
 /* ============================================================
-   NOVA ERA — Series Pitch Deck
-   Style guide: K-HOLE aesthetic (minimalism, full-bleed, 
-   specimen spacing) + Zapfino wordmark + Cormorant body
+   NOVA ERA — Series Pitch
+   Reference: K-HOLE aesthetic (Youth Mode + #5)
+   Bold serif italic body · Heavy sans ALL CAPS display
+   Vivid flat backgrounds · Full-bleed images · Max whitespace
    Letter size: 8.5 × 11in
    ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700;1,900&family=Bebas+Neue&family=Permanent+Marker&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* ── Reset ─────────────────────────────────────────────────── */
 *, *::before, *::after {
@@ -14,275 +17,219 @@
 
 /* ── Design Tokens ──────────────────────────────────────────── */
 :root {
-  /* Palette — placeholder; will refine with Lauren's references */
-  --ink:        #0C0A08;        /* near-black, warm */
-  --paper:      #F0EBE1;        /* aged ivory */
-  --paper-warm: #E8E0D4;        /* slightly darker ivory */
-  --accent:     #2A1F14;        /* very dark brown, for accents */
-  --signal:     #C8A96E;        /* antique gold — placeholder color */
-  --white:      #FFFFFF;
+  /* K-HOLE palette — vivid, flat, unexpected */
+  --white:       #FFFFFF;
+  --black:       #000000;
+  --neon-green:  #00E641;
+  --elec-blue:   #2B14E6;
+  --gold:        #C9A555;
+  --coral:       #E8523A;
+  --paper:       #F5F0E8;
 
   /* Typography */
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'Bebas Neue', 'Arial Black', Impact, sans-serif;
+  --font-brush:  'Permanent Marker', 'Brush Script MT', cursive;
+  --font-mono:   'Courier Prime', 'Courier New', monospace;
   --font-wordmark: 'Zapfino', 'Zapf Chancery', 'Palatino Linotype', cursive;
-  --font-serif:    'Cormorant', 'Cormorant Garamond', Georgia, serif;
-  --font-sans:     'Helvetica Neue', Arial, sans-serif;
 
-  /* Page dimensions — letter size */
-  --page-w:     8.5in;
-  --page-h:     11in;
-
-  /* Spacing rhythm */
-  --margin-outer: 0.65in;
-  --margin-inner: 0.5in;
+  /* Page */
+  --page-w: 8.5in;
+  --page-h: 11in;
+  --margin: 8%;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
 html {
-  font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #D0C8BC;  /* visible in browser between pages */
+  background: #888;
 }
 
 body {
-  font-family: var(--font-serif);
-  color: var(--ink);
-  background: #D0C8BC;
+  background: #888;
 }
 
 /* ── Page Shell ─────────────────────────────────────────────── */
 .page {
   width: var(--page-w);
   height: var(--page-h);
-  margin: 0.4in auto;
-  background: var(--paper);
+  margin: 0.35in auto;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-
-/* ── Shared Inner Layout ─────────────────────────────────────── */
-.page__inner {
-  padding: var(--margin-outer);
-  flex: 1;
-}
-
-.page__inner--center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-/* ── Labels (small caps category markers) ──────────────────── */
-.label {
-  font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-bottom: 1.8rem;
-}
-
-/* ── Section Headings ───────────────────────────────────────── */
-.section-heading {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-bottom: 0.5in;
-}
-
-.section-heading--page-top {
-  padding: var(--margin-outer) var(--margin-outer) 0;
-  margin-bottom: 0.35in;
-}
-
-/* ── Body Text ──────────────────────────────────────────────── */
-.body-text {
-  font-family: var(--font-serif);
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--ink);
-  max-width: 36em;
-}
-
-.body-text + .body-text {
-  margin-top: 1.1em;
+  background: var(--white);
 }
 
 
 /* ══════════════════════════════════════════════════════════════
    01 · COVER
+   Full-bleed image · Zapfino title overlaid bottom-left
+   Background: black (image fills it)
    ══════════════════════════════════════════════════════════════ */
 .page--cover {
-  background: var(--ink);
-  justify-content: flex-end;
+  background: var(--black);
 }
 
-.cover__image-fill {
+.cover__image {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.cover__image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(
-      170deg,
-      rgba(12,10,8,0.05) 0%,
-      rgba(12,10,8,0.55) 55%,
-      rgba(12,10,8,0.90) 100%
-    ),
-    /* placeholder until real image is dropped in */
-    repeating-linear-gradient(
-      45deg,
-      #1a1510 0px,
-      #1a1510 2px,
-      #231e18 2px,
-      #231e18 12px
-    );
-  /* swap this for: background-image: url('../images/cover.jpg'); background-size: cover; background-position: center; */
-}
-
-.cover__content {
-  position: relative;
-  z-index: 1;
-  padding: 0 var(--margin-outer) 0.55in;
-}
-
-.title--wordmark {
-  font-family: var(--font-wordmark);
-  font-size: 4.8rem;
-  font-weight: 400;
-  color: var(--white);
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-  /* Zapfino renders beautifully at large sizes; 
-     on non-Mac systems this falls back gracefully */
-}
-
-.cover__series-type {
-  font-family: var(--font-serif);
-  font-size: 0.72rem;
-  font-weight: 300;
-  font-style: italic;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-top: 0.7rem;
-}
-
-.cover__footer {
-  position: relative;
-  z-index: 1;
-  padding: 0.2in var(--margin-outer);
-  border-top: 1px solid rgba(200, 169, 110, 0.2);
-}
-
-.cover__network-slug {
-  font-family: var(--font-sans);
-  font-size: 0.55rem;
-  font-weight: 400;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(200,169,110,0.5);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   02 · LOGLINE
-   ══════════════════════════════════════════════════════════════ */
-.page--logline {
-  background: var(--paper);
-}
-
-.logline__text {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.65;
-  color: var(--ink);
-  max-width: 28em;
-  border: none;
-  quotes: none;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   03 · THE WORLD
-   ══════════════════════════════════════════════════════════════ */
-.page--world {
-  background: var(--paper-warm);
-}
-
-.world__image-fill {
-  flex: 0 0 4.4in;
-  position: relative;
-  overflow: hidden;
-}
-
-.world__image-placeholder {
-  width: 100%;
-  height: 100%;
+  /* placeholder: replace background-image with url('../images/cover.jpg') */
   background:
-    /* will be replaced with background-image: url('../images/world.jpg') */
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.72) 100%),
     repeating-linear-gradient(
-      135deg,
-      #C4B89E 0px,
-      #C4B89E 1px,
-      #D4C8B2 1px,
-      #D4C8B2 14px
+      -55deg,
+      #1A1A1A 0px, #1A1A1A 1px,
+      #242424 1px, #242424 18px
     );
   background-size: cover;
   background-position: center;
 }
 
-.world__text {
-  flex: 1;
-  padding: 0.45in var(--margin-outer) var(--margin-outer);
+.cover__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0 var(--margin) 0.5in;
 }
 
-.world__text .section-heading {
-  margin-bottom: 0.25in;
+.cover__title {
+  font-family: var(--font-wordmark);
+  font-size: 5.5rem;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.cover__subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--white);
+  letter-spacing: 0.3em;
+  opacity: 0.65;
+  margin-top: 0.5rem;
 }
 
 
 /* ══════════════════════════════════════════════════════════════
-   04 · TONE
+   02 · LOGLINE
+   White · Single large bold italic statement · extreme whitespace
+   Mirrors K-HOLE text-only pages
    ══════════════════════════════════════════════════════════════ */
-.page--tone {
-  background: var(--ink);
+.page--logline {
+  background: var(--white);
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--margin);
 }
 
-.page--tone .label {
-  color: rgba(200,169,110,0.6);
+.logline__label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--black);
+  opacity: 0.4;
+  margin-bottom: 1.5rem;
+}
+
+.logline__text {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--black);
+  max-width: 26em;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   03 · THE WORLD
+   Full-bleed image top 55% · Bold serif italic text bottom
+   Background: white (below image)
+   ══════════════════════════════════════════════════════════════ */
+.page--world {
+  background: var(--white);
+}
+
+.world__image {
+  flex: 0 0 55%;
+  position: relative;
+  overflow: hidden;
+  /* replace with: background-image: url('../images/world.jpg'); background-size: cover; */
+  background:
+    repeating-linear-gradient(
+      110deg,
+      #BFBAB0 0, #BFBAB0 1px,
+      #D5D0C6 1px, #D5D0C6 22px
+    );
+}
+
+.world__body {
+  flex: 1;
+  padding: 0.4in var(--margin) 0.4in;
+}
+
+.world__heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--black);
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+.world__text {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--black);
+}
+
+.world__text + .world__text {
+  margin-top: 0.8rem;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   04 · TONE / THEMES
+   Background: neon green · Bold italic white text list
+   Mirrors K-HOLE green pages
+   ══════════════════════════════════════════════════════════════ */
+.page--tone {
+  background: var(--neon-green);
+  justify-content: center;
+  padding: var(--margin);
+}
+
+.tone__label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  color: var(--black);
+  opacity: 0.5;
+  margin-bottom: 1.8rem;
 }
 
 .tone__list {
   list-style: none;
-  counter-reset: tone-counter;
 }
 
 .tone__list li {
   font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 300;
+  font-size: 2.4rem;
+  font-weight: 700;
   font-style: italic;
-  color: var(--paper);
-  line-height: 1.5;
-  padding: 0.28rem 0;
-  border-bottom: 1px solid rgba(240,235,225,0.08);
-  letter-spacing: 0.02em;
+  line-height: 1.3;
+  color: var(--white);
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  padding: 0.22rem 0;
 }
 
 .tone__list li:last-child {
@@ -292,198 +239,229 @@ body {
 
 /* ══════════════════════════════════════════════════════════════
    05 · CHARACTERS
+   White · Three-up grid · large italic names · portrait placeholders
    ══════════════════════════════════════════════════════════════ */
 .page--characters {
-  background: var(--paper);
+  background: var(--white);
+  padding: var(--margin);
+}
+
+.characters__heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  opacity: 0.4;
+  margin-bottom: 0.35in;
 }
 
 .characters__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.3in;
-  padding: 0 var(--margin-outer) var(--margin-outer);
+  gap: 0.28in;
   flex: 1;
 }
 
-.character {
+.character__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  /* replace with: background-image: url('../images/character.jpg'); background-size: cover; */
+  background: #E8E3DC;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.character__image-placeholder {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: var(--paper-warm);
-  border: 1px solid rgba(12,10,8,0.07);
-  /* replace with: background-image: url('../images/character-name.jpg'); background-size: cover; */
+.character__image::after {
+  content: 'IMAGE';
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: rgba(0,0,0,0.2);
 }
 
 .character__name {
   font-family: var(--font-wordmark);
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--ink);
-  margin-top: 0.18in;
+  font-size: 1.4rem;
   line-height: 1.2;
+  margin-top: 0.14in;
+  color: var(--black);
 }
 
 .character__role {
   font-family: var(--font-sans);
-  font-size: 0.55rem;
-  font-weight: 400;
+  font-size: 0.6rem;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--signal);
-  margin-top: 0.15rem;
-  margin-bottom: 0.4rem;
+  color: var(--black);
+  opacity: 0.4;
+  margin-top: 0.12rem;
+  margin-bottom: 0.3rem;
 }
 
 .character__desc {
   font-family: var(--font-serif);
-  font-size: 0.78rem;
-  line-height: 1.65;
-  color: var(--ink);
-  opacity: 0.75;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--black);
 }
 
 
 /* ══════════════════════════════════════════════════════════════
-   06 · VISUAL REFERENCES / COMPS
+   06 · COMPS / IN THE SPIRIT OF
+   Background: electric blue · White brush-script display header
+   Large bold italic white list below
+   Mirrors K-HOLE blue pages
    ══════════════════════════════════════════════════════════════ */
-.page--references {
-  background: var(--paper-warm);
+.page--comps {
+  background: var(--elec-blue);
+  justify-content: center;
+  padding: var(--margin);
 }
 
-.page--references .label {
-  margin-bottom: 2.4rem;
+.comps__heading {
+  font-family: var(--font-brush);
+  font-size: 3.5rem;
+  color: var(--white);
+  margin-bottom: 0.5in;
+  line-height: 1;
 }
 
-.references__list {
+.comps__list {
   list-style: none;
 }
 
-.references__list li {
+.comps__list li {
   font-family: var(--font-serif);
-  font-size: 2rem;
-  font-weight: 300;
+  font-size: 1.9rem;
+  font-weight: 700;
   font-style: italic;
-  color: var(--ink);
-  line-height: 1.4;
+  color: var(--white);
+  line-height: 1.35;
   padding: 0.18rem 0;
-  border-bottom: 1px solid rgba(12,10,8,0.09);
-  letter-spacing: 0.01em;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
 }
 
-.references__list li:last-child {
+.comps__list li:last-child {
   border-bottom: none;
 }
 
 
 /* ══════════════════════════════════════════════════════════════
    07 · EPISODE ARC
+   Background: white · Bold sans-serif episode numbers · 
+   Bold italic titles
    ══════════════════════════════════════════════════════════════ */
 .page--episodes {
-  background: var(--paper);
+  background: var(--white);
+  padding: var(--margin);
+}
+
+.episodes__heading {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.28em;
+  opacity: 0.4;
+  margin-bottom: 0.35in;
 }
 
 .episodes__list {
-  padding: 0 var(--margin-outer) var(--margin-outer);
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .episode {
   display: flex;
   align-items: baseline;
-  gap: 0.3in;
-  padding: 0.16in 0;
-  border-bottom: 1px solid rgba(12,10,8,0.07);
+  gap: 0.25in;
+  padding: 0.13in 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .episode:last-child {
   border-bottom: none;
 }
 
-.episode__number {
+.episode__num {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
-  color: var(--signal);
-  flex: 0 0 0.35in;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  opacity: 0.22;
+  flex: 0 0 0.4in;
 }
+
+.episode__body {}
 
 .episode__title {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.05rem;
+  font-weight: 700;
   font-style: italic;
-  color: var(--ink);
-  margin-bottom: 0.2rem;
+  color: var(--black);
+  margin-bottom: 0.15rem;
 }
 
 .episode__desc {
   font-family: var(--font-serif);
   font-size: 0.78rem;
-  line-height: 1.6;
-  color: var(--ink);
-  opacity: 0.65;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--black);
+  opacity: 0.6;
 }
 
 
 /* ══════════════════════════════════════════════════════════════
    08 · CREATOR STATEMENT
+   Background: coral/unexpected color · Zapfino large quote
+   Mirrors K-HOLE vivid-bg closing spreads
    ══════════════════════════════════════════════════════════════ */
 .page--creator {
-  background: var(--ink);
-}
-
-.page--creator .page__inner {
-  align-items: center;
-  text-align: center;
+  background: var(--coral);
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--margin);
 }
 
 .creator__statement {
   font-family: var(--font-wordmark);
-  font-size: 1.55rem;
+  font-size: 2.1rem;
   font-weight: 400;
-  line-height: 1.7;
-  color: var(--paper);
+  color: var(--white);
+  line-height: 1.65;
   max-width: 22em;
-  margin-bottom: 0.55in;
-  quotes: none;
+  margin-bottom: 0.5in;
 }
 
 .creator__name {
-  font-family: var(--font-serif);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--signal);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--white);
   margin-bottom: 0.4rem;
 }
 
 .creator__bio {
   font-family: var(--font-serif);
-  font-size: 0.8rem;
-  line-height: 1.65;
-  color: var(--paper);
-  opacity: 0.55;
-  max-width: 30em;
+  font-size: 0.88rem;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--white);
+  opacity: 0.75;
+  max-width: 34em;
 }
 
 
 /* ══════════════════════════════════════════════════════════════
-   PRINT STYLES
+   PRINT
    ══════════════════════════════════════════════════════════════ */
 @media print {
-  html, body {
-    background: white;
-  }
-
+  html, body { background: white; }
   .page {
     width: 8.5in;
     height: 11in;
@@ -491,7 +469,6 @@ body {
     page-break-after: always;
     break-after: page;
   }
-
   .page:last-of-type {
     page-break-after: avoid;
     break-after: avoid;
