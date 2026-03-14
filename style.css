@@ -247,6 +247,49 @@ body { background: #555; }
 
 
 /* ══════════════════════════════════════════════════════════════
+   05 · FORMAT PAGE — navy, text-only, centered
+   ══════════════════════════════════════════════════════════════ */
+.page--format {
+  background: var(--navy);
+  justify-content: center;
+}
+
+.page--format__inner {
+  padding: 0 var(--m);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35in;
+}
+
+.page--format .section-title {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 3rem;
+  color: var(--yellow);
+}
+
+/* Second mood page — bakery full bleed, no overlay */
+.page--mood-2 .mood__bg {
+  opacity: 1;
+  background-position: center;
+}
+
+/* Ref year styling */
+.ref-year {
+  font-weight: 700;
+  opacity: 0.45;
+  font-size: 0.85em;
+}
+
+/* Season year */
+.season-year {
+  font-size: 0.5em;
+  opacity: 0.5;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+/* ══════════════════════════════════════════════════════════════
    08 · TONE / COMPS — midnight, centered italic list
    ══════════════════════════════════════════════════════════════ */
 .page--tone {
