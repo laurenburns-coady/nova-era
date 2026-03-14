@@ -11,15 +11,15 @@
 /* ── Tokens ─────────────────────────────────────────────────── */
 :root {
   /* Colors — PLACEHOLDER; swap once show palette is decided */
-  --A:      #FF5C00;   /* vivid orange — primary background */
-  --B:      #5500CC;   /* vivid violet — secondary background */
+  --A:      #00E050;   /* vivid green — primary (K-HOLE ref) */
+  --B:      #2020CC;   /* vivid blue — secondary (K-HOLE ref) */
   --dark:   #060410;   /* near-black */
   --light:  #FAFAF7;   /* near-white (characters page) */
   --gold:   #CC9933;   /* running-header accent */
   --white:  #FFFFFF;
 
   /* Type */
-  --zapfino: 'Zapfino', 'Zapf Chancery', 'Palatino Linotype', cursive;
+  --display: 'Permanent Marker', 'Caveat', cursive;
   --sans:    'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* Page */
@@ -32,7 +32,7 @@
 html { background: #888; }
 body { font-family: var(--sans); font-weight: 700; background: #888; }
 
-.zapfino { font-family: var(--zapfino); font-weight: 400; }
+.zapfino { font-family: var(--display); font-weight: 400; }
 .sans    { font-family: var(--sans); font-weight: 700; }
 
 /* ── Page ───────────────────────────────────────────────────── */
