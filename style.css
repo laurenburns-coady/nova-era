@@ -131,30 +131,28 @@ body { font-family: var(--sans); font-weight: 700; background: #888; }
 
 /* ══════════════════════════════════════════════════════════════
    01 · COVER
+   K-HOLE model: single element floating dead-center in a solid
+   field of color. Nothing else.
    ══════════════════════════════════════════════════════════════ */
-.page--cover { background: var(--A); justify-content: flex-end; }
-
-.cover__bg {
-  position: absolute; inset: 0; z-index: 0;
-  /* drop in: background: url('../images/cover.jpg') center/cover; */
-  /* overlay so text stays legible: */
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.45) 60%,
-    rgba(0,0,0,0.75) 100%
-  ), var(--A);
+.page--cover {
+  background: var(--A);
+  justify-content: center;
+  align-items: center;
 }
 
+.cover__bg { display: none; } /* remove legacy overlay */
+
 .cover__body {
-  position: relative; z-index: 1;
-  padding: 0 var(--m) 0.5in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .cover__title {
   font-size: 5.5rem;
   color: var(--white);
-  line-height: 1;
+  line-height: 1.05;
 }
 
 .cover__sub {
@@ -163,41 +161,43 @@ body { font-family: var(--sans); font-weight: 700; background: #888; }
   text-transform: uppercase;
   color: var(--white);
   opacity: 0.65;
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
 }
 
-.cover__foot {
-  position: relative; z-index: 1;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding: 0.2in var(--m);
-}
-
-.cover__network {
-  font-size: 0.55rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--white);
-  opacity: 0.4;
-}
+.cover__foot { display: none; } /* remove — K-HOLE covers have nothing else */
 
 
 /* ══════════════════════════════════════════════════════════════
    02 · CONTENTS
+   K-HOLE model: small logo/label at top, list centered below
    ══════════════════════════════════════════════════════════════ */
-.page--contents { background: var(--A); }
+.page--contents {
+  background: var(--A);
+  justify-content: center;
+  align-items: center;
+}
+
+.page-label {
+  position: absolute;
+  top: var(--m);
+  left: 0; right: 0;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--white);
+  opacity: 0.55;
+}
 
 .contents__list {
   list-style: none;
-  padding: 0.3in var(--m) 0;
+  text-align: center;
 }
 
 .contents__list li {
   font-family: var(--zapfino);
   font-weight: 400;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--white);
-  line-height: 1.55;
-  padding: 0.08rem 0;
+  line-height: 1.6;
 }
 
 
@@ -240,29 +240,40 @@ body { font-family: var(--sans); font-weight: 700; background: #888; }
 .mood__overlay {
   position: absolute;
   z-index: 1;
-  top: 38%;
+  top: 50%;
   left: var(--m);
+  transform: translateY(-50%);
 }
 
 .mood__line {
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: var(--white);
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 
 /* ══════════════════════════════════════════════════════════════
    05 · TONE
    ══════════════════════════════════════════════════════════════ */
-.page--tone { background: var(--B); }
+.page--tone {
+  background: var(--B);
+  justify-content: center;
+}
+
+.page--tone .section-title {
+  padding: 0 var(--m) 0;
+  margin-bottom: 0.18in;
+}
+
+.page--tone .rule {
+  margin-bottom: 0.3in;
+}
 
 .tone__list {
   list-style: none;
-  padding: 0.35in var(--m) 0;
-  flex: 1;
+  padding: 0 var(--m);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
 }
 
 .tone__list li {
