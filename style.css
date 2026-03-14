@@ -1,38 +1,42 @@
 /* ============================================================
-   NOVA ERA — Series Pitch Deck
-   Palette drawn directly from production images:
-     Yellow   #F5D000  (Nova Era bakery awning)
-     Navy     #1E3150  (CNE twilight sky)
-     Steel    #3B6285  (Christopher portrait bg)
-     Midnight #0E1B3A  (Belly mood wash)
+   NOVA ERA — K-HOLE LITERAL
+   Rules:
+   - One font weight per page
+   - Large body text
+   - Text over images, not beside them
+   - Whole pages of solid vivid color
+   - No decorative elements
+   - White on dark/vivid, black on yellow
    ============================================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --yellow:   #F5D000;
-  --navy:     #1E3150;
-  --steel:    #3B6285;
-  --midnight: #0E1B3A;
-  --slate:    #4A5560;
-  --white:    #FFFFFF;
-  --black:    #0A0A0A;
+  --yellow:  #F5D000;
+  --navy:    #1E3150;
+  --steel:   #3B6285;
+  --slate:   #3E4A55;
+  --black:   #0A0A0A;
+  --white:   #FFFFFF;
 
-  --display: 'Cormorant', Georgia, serif;
-  --sans:    'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --f-display: 'Cormorant', Georgia, serif;
+  --f-body:    'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   --pw: 8.5in;
   --ph: 11in;
   --m:  0.65in;
 }
 
-html { background: #555; }
-body { background: #555; }
+html, body { background: #555; }
 
-.display { font-family: var(--display); font-style: italic; font-weight: 700; }
-.sans    { font-family: var(--sans); font-weight: 700; }
+/* ── Type helpers ─────────────────────────────────────────── */
+.display { font-family: var(--f-display); font-style: italic; font-weight: 700; }
+.body    { font-family: var(--f-body); font-weight: 700; }
 
-/* ── Page shell ──────────────────────────────────────────────── */
+.upper { text-transform: uppercase; }
+.sp    { letter-spacing: 0.2em; }
+
+/* ── Page ─────────────────────────────────────────────────── */
 .page {
   width: var(--pw);
   height: var(--ph);
@@ -43,37 +47,164 @@ body { background: #555; }
   flex-direction: column;
 }
 
-/* ── Shared text elements ────────────────────────────────────── */
-.running-header {
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
+/* ── Backgrounds ──────────────────────────────────────────── */
+.bg-yellow { background: var(--yellow); }
+.bg-navy   { background: var(--navy); }
+.bg-steel  { background: var(--steel); }
+.bg-slate  { background: var(--slate); }
+.bg-image  {
+  background-size: cover;
+  background-position: center;
+}
+
+/* ── Overlays ─────────────────────────────────────────────── */
+.overlay-dark {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 0;
+}
+
+/* ── Layout helpers ───────────────────────────────────────── */
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--m);
+  text-align: center;
+}
+.center.pad { padding: var(--m); }
+
+.top-text {
+  padding: var(--m) var(--m) 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35in;
+}
+
+/* ── Text over images ─────────────────────────────────────── */
+.text-over {
+  position: absolute;
+  z-index: 1;
+  left: var(--m);
+  right: var(--m);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.text-over.bottom {
+  top: auto;
+  transform: none;
+  bottom: var(--m);
+}
+
+/* ── Type scales ──────────────────────────────────────────── */
+
+/* Giant display — cover title */
+.giant {
+  font-size: 6.5rem;
+  line-height: 1;
+  color: var(--black);
+}
+
+/* Giant overlaid on image */
+.giant-over {
+  font-size: 4.2rem;
+  line-height: 1.1;
+  color: var(--white);
+}
+
+/* Chapter heading at top of text page */
+.chapter {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 0;
+}
+
+/* Creator quote */
+.creator-quote {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--white);
+  max-width: 22em;
+  text-align: center;
+}
+
+/* Body text — large K-HOLE style */
+.large {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.small {
+  font-size: 0.6rem;
+  color: var(--black);
+}
+.bg-navy .small,
+.bg-steel .small,
+.bg-slate .small { color: var(--white); }
+
+/* List — contents page */
+.list-plain {
+  list-style: none;
+  text-align: center;
+}
+.list-plain li {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  color: var(--black);
+}
+
+/* List — comps/refs page */
+.list-refs {
+  list-style: none;
+  text-align: center;
+}
+.list-refs li {
+  font-size: 2rem;
+  line-height: 1.55;
+  color: var(--black);
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  padding: 0.12in 0.5in;
+}
+.list-refs li:last-child { border-bottom: none; }
+
+/* ── Character specimen ───────────────────────────────────── */
+.char-label {
+  font-family: var(--f-body);
+  font-weight: 700;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--white);
-  opacity: 0.5;
-  margin-bottom: 0.22in;
+  opacity: 0.55;
+  text-align: center;
+  padding: 0.3in 0 0;
 }
 
-.body {
-  font-size: 1.05rem;
-  line-height: 1.45;
+.specimen {
+  flex: 1;
+  margin: 0.15in 0.4in 0;
+  background-size: cover;
+  background-position: center top;
+}
+
+.char-desc {
+  font-size: 0.78rem;
+  line-height: 1.55;
   color: var(--white);
-}
-.body + .body { margin-top: 0.7em; }
-
-.section-title {
-  font-size: 3.8rem;
-  color: var(--white);
-  line-height: 1;
-  padding: 0.4in var(--m) 0;
+  opacity: 0.65;
+  padding: 0.2in var(--m) 0;
 }
 
-.rule {
-  border: none;
-  border-top: 1.5px solid rgba(255,255,255,0.25);
-  margin: 0.2in var(--m) 0;
-}
-
+/* ── Page numbers ─────────────────────────────────────────── */
 .page-num {
+  font-family: var(--f-body);
+  font-weight: 700;
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   color: var(--white);
@@ -82,342 +213,15 @@ body { background: #555; }
   position: absolute;
   bottom: 0.3in;
   left: 0; right: 0;
+  z-index: 2;
 }
+.page-num.white { color: var(--white); opacity: 0.6; }
+.bg-yellow .page-num { color: var(--black); }
 
-.page-label {
-  position: absolute;
-  top: var(--m);
-  left: 0; right: 0;
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--white);
-  opacity: 0.45;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   01 · COVER — yellow field, title floating center
-   ══════════════════════════════════════════════════════════════ */
-.page--cover {
-  background: var(--yellow);
-  justify-content: center;
-  align-items: center;
-}
-
-.cover__center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.cover__title {
-  font-size: 6rem;
-  color: var(--black);
-  line-height: 1;
-}
-
-.cover__sub {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--black);
-  opacity: 0.5;
-  margin-top: 0.6rem;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   02 · CONTENTS — yellow, centered Cormorant italic list
-   ══════════════════════════════════════════════════════════════ */
-.page--contents {
-  background: var(--yellow);
-  justify-content: center;
-  align-items: center;
-}
-
-.contents__list {
-  list-style: none;
-  text-align: center;
-}
-
-.contents__list li {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--black);
-  line-height: 1.65;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   03 · THE WORLD — CNE image top, navy below with text
-   ══════════════════════════════════════════════════════════════ */
-.page--world {
-  background: var(--navy);
-}
-
-.world__image {
-  flex: 0 0 4.5in;
-  background-size: cover;
-  background-position: center top;
-}
-
-.world__text {
-  flex: 1;
-  padding: 0.35in var(--m) 0.5in;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   04 · MOOD — full bleed image, Cormorant italic overlay
-   ══════════════════════════════════════════════════════════════ */
-.page--mood {
-  background: var(--midnight);
-}
-
-.mood__bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.75;
-}
-
-.mood__overlay {
-  position: absolute;
-  z-index: 1;
-  bottom: var(--m);
-  left: var(--m);
-}
-
-.mood__line {
-  font-size: 3.8rem;
-  color: var(--white);
-  line-height: 1.15;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   05-07 · CHARACTER PAGES — K-HOLE specimen style
-   Portrait matted in solid color field, name + desc below
-   ══════════════════════════════════════════════════════════════ */
-.page--character {
-  flex-direction: column;
-}
-
-.char__portrait {
-  flex: 0 0 7.5in;
-  background-size: cover;
-  background-position: center top;
-}
-
-.char__info {
-  flex: 1;
-  padding: 0.22in var(--m);
-  display: flex;
-  align-items: baseline;
-  gap: 0.35in;
-}
-
-.char__label {
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--yellow);
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-
-.char__desc {
-  font-size: 0.75rem;
-  line-height: 1.55;
-  color: var(--white);
-  opacity: 0.7;
-}
-
-/* Per-character background colors, pulled from each photo */
-.page--christopher { background: var(--steel); }
-.page--kim         { background: var(--slate); }
-.page--travis      { background: var(--navy); }
-
-
-/* ══════════════════════════════════════════════════════════════
-   05 · FORMAT PAGE — navy, text-only, centered
-   ══════════════════════════════════════════════════════════════ */
-.page--format {
-  background: var(--navy);
-  justify-content: center;
-}
-
-.page--format__inner {
-  padding: 0 var(--m);
-  display: flex;
-  flex-direction: column;
-  gap: 0.35in;
-}
-
-.page--format .section-title {
-  padding: 0;
-  margin-bottom: 0;
-  font-size: 3rem;
-  color: var(--yellow);
-}
-
-/* Second mood page — bakery full bleed, no overlay */
-.page--mood-2 .mood__bg {
-  opacity: 1;
-  background-position: center;
-}
-
-/* Ref year styling */
-.ref-year {
-  font-weight: 700;
-  opacity: 0.45;
-  font-size: 0.85em;
-}
-
-/* Season year */
-.season-year {
-  font-size: 0.5em;
-  opacity: 0.5;
-  letter-spacing: 0.08em;
-  vertical-align: middle;
-}
-
-/* ══════════════════════════════════════════════════════════════
-   08 · TONE / COMPS — midnight, centered italic list
-   ══════════════════════════════════════════════════════════════ */
-.page--tone {
-  background: var(--midnight);
-  justify-content: center;
-  align-items: center;
-}
-
-.page--tone__inner {
-  text-align: center;
-}
-
-.page--tone .section-title {
-  padding: 0;
-  margin-bottom: 0.4in;
-  color: var(--yellow);
-  font-size: 2.8rem;
-}
-
-.refs__list {
-  list-style: none;
-}
-
-.refs__list li {
-  font-size: 1.5rem;
-  line-height: 1.55;
-  color: var(--white);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding: 0.12in 0;
-}
-
-.refs__list li:last-child { border-bottom: none; }
-
-
-/* ══════════════════════════════════════════════════════════════
-   09 · EPISODES — navy, numbered list
-   ══════════════════════════════════════════════════════════════ */
-.page--episodes {
-  background: var(--navy);
-}
-
-.episode__list {
-  list-style: none;
-  padding: 0.3in var(--m) 0.7in;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  counter-reset: ep;
-}
-
-.episode__list li {
-  counter-increment: ep;
-  font-size: 0.88rem;
-  color: var(--white);
-  line-height: 1.5;
-  padding: 0.14in 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  gap: 0.25in;
-  align-items: baseline;
-}
-
-.episode__list li:last-child { border-bottom: none; }
-
-.episode__list li::before {
-  content: "0" counter(ep);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  color: var(--yellow);
-  flex: 0 0 0.35in;
-  padding-top: 0.05em;
-}
-
-.ep__title {
-  font-style: italic;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   10 · CREATOR — midnight, centered Cormorant quote
-   ══════════════════════════════════════════════════════════════ */
-.page--creator {
-  background: var(--midnight);
-  justify-content: center;
-  align-items: center;
-}
-
-.creator__inner {
-  padding: var(--m);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4in;
-  max-width: 6.5in;
-}
-
-.creator__quote {
-  font-size: 2rem;
-  color: var(--white);
-  line-height: 1.65;
-  quotes: none;
-}
-
-.creator__name {
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--yellow);
-}
-
-.creator__bio {
-  font-size: 0.78rem;
-  line-height: 1.6;
-  color: var(--white);
-  opacity: 0.5;
-  max-width: 30em;
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   PRINT
-   ══════════════════════════════════════════════════════════════ */
+/* ── Print ────────────────────────────────────────────────── */
 @media print {
   html, body { background: white; }
   .page { margin: 0; page-break-after: always; break-after: page; }
   .page:last-child { page-break-after: avoid; break-after: avoid; }
 }
-
 @page { size: letter portrait; margin: 0; }
