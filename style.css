@@ -145,6 +145,42 @@ html, body { background: #555; }
   bottom: var(--m);
 }
 
+/* ── Character pages — full bleed, text overlaid ──────────── */
+.page-char {
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+}
+
+.char-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0) 28%,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.75) 100%
+  );
+  z-index: 0;
+}
+
+.char-name {
+  position: absolute;
+  z-index: 1;
+  top: 0.5in;
+  left: var(--m);
+  right: var(--m);
+}
+
+.char-bio {
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5in;
+  left: var(--m);
+  right: var(--m);
+}
+
 /* ── Images ────────────────────────────────────────────────── */
 
 /* Inline image — sits in text flow, full width */
